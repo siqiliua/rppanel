@@ -1,0 +1,311 @@
+#mainnav .nav .nav {
+    display: none;
+    font-size: 12px;
+}
+
+#mainnav .nav>.active>ul {
+    display: block;
+}
+
+#mainnav {
+    margin-left: 50px;
+}
+
+#nav-par-div .nav .nav {
+    display: none;
+    font-size: 12px;
+}
+
+#nav-par-div .nav>.active>ul {
+    display: block;
+}
+.list-group-item {
+    border: 0px;
+    padding: 0px 15px;
+}
+
+.list-group-item.active>a {
+    font-weight: 700;
+    color: #5E9E70;
+    border-right: 2px solid #5E9E70;
+    background-color: transparent!important;
+}
+
+.list-group-item>a {
+    color: gray;
+    font-size: 14px;
+    /* font-weight: bold; */
+}
+
+.list-group-item.active {
+    background-color: transparent!important;
+}
+.typeahead.dropdown-menu {
+    font-size: 16px;
+    /* width: 87%; */
+    margin: 12px 0;
+    padding: 8px 0;
+    background-color: #fff;
+    text-align: left;
+    padding-top: -10px;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+.typeahead{
+    border: 2px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-radius: 8px;
+    width: 50%;
+    height: 40px;
+    font-size: 16px;
+    line-height: 26px;
+    outline: none;
+    margin-bottom: -10px;
+    padding-left: 12px;
+    margin-bottom: 7px;
+    margin-top: 7px;
+    position: relative;
+}
+.main-disaplay{
+    overflow: hidden;
+    display: block;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.readsSet{
+    float: left;
+    margin-top: 4px;
+}
+#readsSet{
+    height: 30px;
+    margin-top: 10px;
+}
+#tip{
+    margin-left: 20%;
+    float: left;
+    margin-top: 7px;
+}
+#readsSet1{
+    margin-left: 30px;
+}
+#readsSet2{
+    margin-left: 30px;
+}
+#high{
+    float: left;
+    margin: auto 5px;
+    text-align: center;
+}
+#low{
+    float: left;
+    margin: auto 5px;
+    text-align: center;
+}
+
+#buttons0{
+    height: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+#hint {
+    float: left;
+    margin-top: 5px;
+    margin-right:  10px;
+    margin-left: 20%;
+}
+#Codons{
+    float: left;
+    width: 280px;
+    margin-top: 3px;
+}
+#generate1{
+    float: left;
+    margin-top: 0;
+    margin-left: 100px;
+}
+
+.text{
+    color: #212529;
+}
+.spd-t{
+    margin-left: 20px;
+    margin-right: 30px;
+}
+#buttons1{
+    margin-left: 13%;
+}
+#reset{
+    float: left;
+    margin: auto 10px;
+}
+#start{
+    float: left;
+    margin: auto 10px;
+}
+#stop{
+    float: left;
+}
+#speed{
+    width: 220px;
+}
+#timeSpan{
+    width: 220px;
+}
+.context{
+    float: left;
+    color: #212529;
+    margin-top: 6px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.canvas{
+    background-color: white;
+    border: 1px solid #cccccc;
+    margin-top: 10px;
+    margin-left: 42px;
+    margin-bottom: 10px;
+}
+#myCanvas1{
+    width: 750px;
+    height: 900px;
+}
+#myCanvas{
+    width: 750px;
+    height: 300px;
+}
+
+#rpChart{
+    /*width:90%;*/
+    /*height:450px;*/
+    margin: 10px auto;
+    text-align: center;
+}
+
+#chartMain{
+    width:90%;
+    height:450px;
+    margin: 10px auto;
+    text-align: center;
+    border: 1px solid #cccccc;
+}
+
+#Table2{
+    width: 90%;
+    word-break: break-all;
+    margin-bottom: 10px;
+    margin-left: 5%;
+    border: 1px solid #cccccc;
+}
+.tableLab2{
+    width: 120px;
+}
+#selected{
+    width: 130px;
+}
+#cdsLength{
+    width: 130px;
+}
+#sequence{
+    text-align: center;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+}
+
+
+#buttons1{
+    height: 30px;
+    margin-top: 12px;
+    margin-bottom: 15px;
+    margin-left: 0;
+}
+#hint1 {
+    float: left;
+    margin-top: 7px;
+    margin-right:  10px;
+    margin-left: 15%;
+}
+#Codons1{
+    float: left;
+    width: 200px;
+}
+#generate2{
+    float: left;
+    margin-top: 0;
+    margin-left: 100px;
+}
+#buttons2{
+    height: 30px;
+    margin-top: 12px;
+    margin-bottom: 15px;
+    display: block;
+}
+#tip2{
+    margin-left: 15%;
+    float: left;
+    margin-top: 7px;
+}
+#readSet2{
+    float: left;
+    margin-left: 10px;
+}
+#high2{
+    float: left;
+    text-align: center;
+    margin: 0 5px;
+}
+#hint2 {
+    float: left;
+    margin-top: 7px;
+    margin-right:  10px;
+    margin-left: 30px;
+}
+#Codons2{
+    float: left;
+    width: 150px;
+}
+
+
+#buttons3{
+    margin-top: 10px;
+    margin-left: 30%;
+}
+#generate{
+    float: left;
+    margin: auto 5%;
+}
+#begin{
+    float: left;
+}
+#hold{
+    margin: auto 5%;
+    float: left;
+}
+
+/*selfDefine页面*/
+#geneSequence{
+    width: 600px;
+    height: 100px;
+    word-break: break-all;
+}
+#footPrint{
+    width: 600px;
+    height: 100px;
+    word-break: break-all;
+}
+#generate0{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

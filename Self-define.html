@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>RP panel</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-table.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-select.css" rel="stylesheet" type="text/css">
+    <link href="css/rppanel.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap3-typeahead.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+</head>
+
+<body data-spy="scroll" data-target="#side-bar-rppanel" id='mainbody'>
+<nav class="navbar navbar-default" style="margin-bottom:0px">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a id="smlogo" class="navbar-brand" href="{{url_for('rsvdb.showIndex')}}">
+                <span style="float: left">RP-panel</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="{{url_for('rsvdb.showIndex')}}">Home</a></li>
+                <li><a href="{{url_for('rsvdb.showDetail')}}">RP-panel</a></li>
+                <li><a href="{{url_for('rsvdb.showStruViewer')}}">RP-viewer</a></li>
+                <li><a href="{{url_for('rsvdb.showHelp')}}">Help</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="jumbotron" style="text-align: center;">
+    <div class="sublogo">
+        <h1>RP-panel</h1>
+        <p>....</p>
+    </div>
+</div>
+<div class="row container main-disaplay">
+    <div class="col-lg-3" id="side-bar-rppanel">
+        <div id="nav-par-div">
+            <ul class="nav list-group fixed" data-spy="affix" id="mainnav">
+                <li>
+                    <h4 style="color:#5c7a29;font-weight: bold;">Navigation</h4>
+                </li>
+                <li class="list-group-item active"><a href="#spy-selection">1. Selection</a>
+                </li>
+                <li class="list-group-item active"><a href="#spy-search">2. Search</a>
+                </li>
+                <li class="list-group-item active"><a href="#spy-basicinfo">3. Basic Info</a>
+                    <ul class="nav list-group">
+                        <li class="list-group-item list-sub-item"><a href="#spy-geneinfo">3.1 Gene Info</a></li>
+                        <li class="list-group-item list-sub-item"><a href="#spy-annoinfo">3.2 Annotation Info</a></li>
+                        <li class="list-group-item list-sub-item"><a href="#spy-rpinfo">3.3 RP Info</a></li>
+                    </ul>
+                </li>
+                <li class="list-group-item active"><a href="#spy-transsimultaion">4. Translation Simulation</a>
+                    <ul class="nav list-group">
+                        <li class="list-group-item list-sub-item"><a href="#spy-transsettings">4.1 Settings</a></li>
+                        <li class="list-group-item list-sub-item"><a href="#spy-transoverall">4.2 Overall Simulation</a></li>
+                    </ul>
+                </li>
+                <li class="list-group-item active"><a href="#spy-subsimultaion">5. Subregion Simulation</a>
+                    <ul class="nav list-group">
+                        <li class="list-group-item list-sub-item"><a href="#spy-subsettings">5.1 Settings</a></li>
+                        <li class="list-group-item list-sub-item"><a href="#spy-subcombine">5.2 Combination</a></li>
+                        <li class="list-group-item list-sub-item"><a href="#spy-subsim">5.3 Subregion simulation</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class='col-lg-9' style="float: right;">
+        <div style="text-align: center;">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="text-align: center;">
+                    <h4 id="spy-selection">1. Input Data</h4>
+                </div>
+                <div style="text-align: center">
+                    <div>
+                        <p>please enter nucleotide sequences</p>
+                        <textarea id="geneSequence"></textarea>>
+                    </div>
+                    <div>
+                        <p>please enter ribosome profiling data </p>
+                        <textarea id="footPrint"></textarea>
+                    </div>
+                </div>
+                <button id="generate0" onclick="get();" type="button" class="btn btn-info btn-sm" >Enter</button>
+            </div>
+        </div>
+
+        <div class="panel panel-default" style="text-align:center">
+            <div class="panel-heading" id="spy-basicinfo"> <h4>2. Basic Info</h4></div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" id="spy-geneinfo"> <h5>2.1 Gene Info</h5></div>
+            <table class="table table-bordered table-hover">
+                <tbody>
+                <tr>
+                    <td class="tableLab1"><a>Transcript ID</a></td>
+                    <td id="geneId" class="geneIdGc">YCL050C</td>
+                    <td class="tableLab1"><a>Gene name</a></td>
+                    <td id="geneName">APA1</td>
+                    <td class="tableLab1"><a data-toggle="tooltip" data-placement="right" title="" data-original-title="The gene you searched lies in this chromosome">Chromosome</a></td>
+                    <td id="chromosome">III</td>
+                </tr>
+                <tr>
+                    <td class="tableLab1"><a data-toggle="tooltip" data-placement="right" title="" data-original-title="GC content of the gene you searched.">GC content</a></td>
+                    <td id="gc" class="geneIdGc">39.34</td>
+                    <td class="tableLab1"><a data-toggle="tooltip" data-placement="right" title="" data-original-title="Gene type of the gene you searched.">Gene type</a></td>
+                    <td colspan="3" id="geneType">protein coding</td>
+                </tr>
+                <tr>
+                    <td class="tableLab1"><a data-toggle="tooltip" data-placement="right" title="" data-original-title="Basic description of the gene you searched">Description</a></td>
+                    <td colspan="5" id="description">AP4A phosphorylase; bifunctional diadenosine 5',5'''-P1,P4-tetraphosphate phosphorylase and ADP sulfurylase involved in catabolism of bis(5'-nucleosidyl) tetraphosphates; catalyzes phosphorolysis of dinucleoside oligophosphates, cleaving substrates' alpha/beta-anhydride bond and introducing Pi into the beta-position of the corresponding NDP formed; protein abundance increases under DNA replication stress; APA1 has a paralog, APA2, that arose from the whole genome duplication [Source:SGD;Acc:S000000555]</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" id="spy-annoinfo"><h5>2.2 Annotation Info</h5></div>
+            <table class="table table-bordered table-hover">
+                <tbody>
+                <tr>
+                    <td class="tableLab1"><a>Gene length</a></td>
+                    <td class="geneIdGc">900</td>
+                    <td class="tableLab1"><a>Codon</a></td>
+                    <td>300</td>
+                    <td class="tableLab1"><a>FPKM</a></td>
+                    <td>1.22145</td>
+                </tr>
+                <tr>
+                    <td class="tableLab1"><a>RP count</a></td>
+                    <td class="geneIdGc">726</td>
+                    <td class="tableLab1"><a>TE</a></td>
+                    <td>3.27</td>
+                    <td class="tableLab1"><a>RSCU</a></td>
+                    <td>1.2</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" id="spy-rpinfo"><h5>2.3 RP info</h5></div>
+            <div id="rpChart" onmouseup="chartAreaClick(event);" style="height: 500px;"></div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading" style="text-align: center;" id="spy-transsimultaion"><h4>3. Translation simulation</h4></div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" id="spy-transsettings"><h5>3.1 Settings</h5></div>
+            <div id="readsSet">
+                <div id="tip">Mark reads num:</div>
+                <div id="readsSet1" class="readsSet">
+                    <div class="readsSet">High: > μ+ </div>
+                    <input id="high" type="number" step="1" min="0" max="10"/>
+                    <div class="readsSet">δ</div>
+                </div>
+                <div id="readsSet2" class="readsSet">
+                    <div class="readsSet">Low: < μ- </div>
+                    <input id="low" type="number" step="1" min="0" max="10"/>
+                    <div class="readsSet">δ</div>
+                </div>
+            </div>
+            <div id="buttons0">
+                <div id="hint">Mark rare codons:</div>
+                <select id="Codons" class="selectpicker" multiple title="select" data-selected-text-format="count>5">
+                    <option value="1">AAC</option>
+                    <option value="2">AAA</option>
+                    <option value="3">ACC</option>
+                </select>
+                <button id="generate1" onclick="generate1();" type="button" class="btn btn-info btn-sm" >Generate</button>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" id="spy-transoverall" ><h5>3.2 Overall simulation</h5></div>
+            <div class="row" style="margin-top:10px;">
+                <div class="col-lg-4" style="margin-left: 80px;">
+                    <span>Run:</span>
+                    <div class="input-group">
+                        <button id="reset" onclick="generate1();" type="button" class="btn btn-default " >reset</button>
+                        <button id="start" onclick="start();" type="button" class="btn btn-default ">start</button>
+                        <button id="stop" onclick="stop();" type="button" class="btn btn-default ">stop</button>
+                    </div>
+                </div>
+                <div class="col-lg-4" id="speed">
+                    <span>Speed:</span>
+                    <div class="btn-group spd-t" role="group" aria-label="...">
+                        <button type="button" class="btn btn-default" id="spdDown" onclick="spdDown();">-</button>
+                        <button type="button" class="btn btn-default" id="spdText" value="3">3</button>
+                        <button type="button" class="btn btn-default" id="spdUp" onclick="spdUp();">+</button>
+                    </div>
+                </div>
+                <div id="timeSpan" class="col-lg-4">
+                    <span>Interval time:</span>
+                    <div class="btn-group spd-t" role="group" aria-label="...">
+                        <button type="button" class="btn btn-default" id="timeDown" onclick="timeDown();">-</button>
+                        <button type="button" class="btn btn-default" id="timeText" value="3">3</button>
+                        <button type="button" class="btn btn-default" id="timeUp" onclick="timeUp();">+</button>
+                    </div>
+                </div>
+            </div>
+            <canvas id="myCanvas1" onclick="cvsClick(event);" class="canvas" width="1500" height="1800"></canvas>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading" style="text-align: center;" id ="spy-subsimultaion"><h4>4. Detailed simulation</h4></div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" id="spy-subsettings"><h5>4.1 Settings</h5></div>
+            <div id="buttons1">
+                <div id="hint1">Select codon num :</div>
+                <select id="Codons1" class="selectpicker" title="select">
+                    <option value="1" selected="selected">1 codon</option>
+                    <option value="3">3 codons</option>
+                    <option value="10">10 codons</option>
+                </select>
+                <button id="generate2" onclick="ready1();" type="button" class="btn btn-info btn-sm" >Generate</button>
+            </div>
+            <div id="buttons2">
+                <div id="tip2">Mark reads num:</div>
+                <div id="readSet2" class="readsSet">
+                    <div class="readsSet">High: > μ+ </div>
+                    <input id="high2" type="number" step="1" min="0" max="10"/>
+                    <div class="readsSet">δ</div>
+                </div>
+                <div id="hint2">Mark rare codons:</div>
+                <select id="Codons2" class="selectpicker" multiple title="select" data-selected-text-format="count>5">
+                    <option value="1">AAC</option>
+                    <option value="2">AAA</option>
+                    <option value="3">ACC</option>
+                </select>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" id="spy-subcombine"><h5>4.2 Combination</h5></div>
+            <div id="chartMain" onmouseup="chartAreaClick(event);"></div>
+            <table class="table table-bordered table-hover" id="Table2">
+                <tbody>
+                <tr>
+                    <td class="tableLab2"><a>CDS Length</a></td>
+                    <td id="cdsLength" >280</td>
+                    <td class="tableLab2"><a>Selected length</a></td>
+                    <td id="selected" ></td>
+                    <td class="tableLab2"><a>Region</a></td>
+                    <td id="region"></td>
+                </tr>
+                <tr>
+                    <td class="tableLab2"><a>Sequence</a></td>
+                    <td colspan="5">
+                        <div id="sequence" style="width: 100%;height: 100px;overflow-y:scroll"></div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" id="spy-subsim"><h5>4.3 Sub-region simulation</h5></div>
+            <div class="container-fluid" id="buttons3">
+                <button id="generate" onclick="generate();" type="button" class="btn btn-info btn-sm" >reset / generate</button>
+                <button id="begin" onclick="Begin();" type="button" class="btn btn-default btn-sm">start</button>
+                <button id="hold" onclick="Hold();" type="button" class="btn btn-default btn-sm">stop</button>
+            </div>
+            <canvas id="myCanvas"  class="canvas" width="1500" height="600"></canvas>
+        </div>
+    </div>
+</div>
+<script src="js/echarts.min.js"></script>
+<script src="js/Self-define.js"></script>
+</body>
+<footer>
+
+</footer>
+<script>
+    $('#mainnav').affix({
+        // offset: {
+        //     top: $('#nav').offset().top
+        //     // bottom: $('footer').outerHeight(true) + $('.application').outerHeight(true) + 40
+        // }
+    });
+    $("#searchGene").typeahead({
+        // source: function(query, process) {
+        //     let geo = $("#sstudyname").text();
+        //     let spe = $("#sspename").text();
+        //     $.post("{{url_for('rsvdb.showStruViewer')}}", {
+        //         "med": "searchGene",
+        //         "geo": geo,
+        //         "spe": spe,
+        //         "label": query
+        //     }, function(data) {
+        //         return process(data.ajlist);
+        //     });
+        // },
+        // afterSelect: function(item) {
+        //     let geo = $("#sstudyname").text();
+        //     getDMSdata(geo, item);
+        // },
+        // fitToElement: true,
+    });
+</script>
+
+</html>
